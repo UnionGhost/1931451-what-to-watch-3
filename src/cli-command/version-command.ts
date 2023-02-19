@@ -5,6 +5,10 @@ import chalk from 'chalk';
 export default class VersionCommand implements CliCommandInterface {
   public readonly name = '--version';
 
+  /**
+   * Д2. Методы, которые не используют поля класса объявлены как статические.
+   * @private
+   */
   private readVersion(): string {
     const contentPageJSON = readFileSync('./package.json', 'utf-8');
     const content = JSON.parse(contentPageJSON);

@@ -52,6 +52,11 @@ export default class WatchlistController extends Controller {
     }
 
     if (await this.watchlistService.findByUserIdAndFilmId(user.id, body.filmId)) {
+      /**
+       * TODO: Проверить
+       * Есть подозрение, что при удалении фильма из списка, он удалится у всех пользователей, которые добавили фильм
+       * Фильм должен удаляться только у того пользователя, который делает запрос
+       */
       this.noContent(res, this.watchlistService.delete(body.filmId));
       return;
     }

@@ -51,6 +51,10 @@ export default class CommentController extends Controller {
       );
     }
 
+    /**
+     * TODO: Думаю что неправильно назначать комментарий для пользователя, который присылается в DTO
+     * Думаю надо присваивать тому, кто сделал запрос
+     */
     const comment = await this.commentService.create({...body, userId: req.user.id});
     this.created(res, fillDTO(CommentResponse, comment));
   }

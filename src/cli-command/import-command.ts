@@ -59,9 +59,15 @@ export default class ImportCommand implements CliCommandInterface {
   }
 
   public async execute(filename: string, login: string, password: string, host: string, dbname: string, salt: string): Promise<void> {
+    /**
+     * TODO: Почему тут используем дефолтный порт?
+     */
     const uri = getURI(login, password, host, DEFAULT_DB_PORT, dbname);
     this.salt = salt;
 
+    /**
+     * TODO: Думаю тут надо дождаться промиса
+     */
     this.databaseService.connect(uri);
 
     const fileReader = new TSVFileReader(filename.trim());

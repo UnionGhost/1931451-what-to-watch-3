@@ -170,10 +170,16 @@ export default class FilmController extends Controller {
     }
 
     const result = await this.filmService.create({...body, userId: user.id});
+    /**
+     * TODO: Зачем запрашивать заново, если после создания уже создаётся модель?
+     */
     const film = await this.filmService.findById(result.id);
     this.created(res, fillDTO(FilmResponse, film));
   }
 
+  /**
+   * TODO: Удалить фильм из списка на просмотр
+   */
   public async delete(
     {params}: Request<core.ParamsDictionary | ParamsGetFilm>,
     res: Response
