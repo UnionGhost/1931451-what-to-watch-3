@@ -42,10 +42,6 @@ export default class Application {
     this.expressApp.use('/upload', express.static(this.config.get('UPLOAD_DIRECTORY')));
     this.expressApp.use('/static', express.static(this.config.get('STATIC_DIRECTORY_PATH')));
 
-    /*
-     * TODO: (Б2) Падает нода если передал некорректный токен.
-     * Нельзя допускать чтобы падало приложение если пользователь отправит некорректный токен
-     */
     const authenticateMiddleware = new AuthenticateMiddleware(this.config.get('JWT_SECRET'));
     this.expressApp.use(authenticateMiddleware.execute.bind(authenticateMiddleware));
   }

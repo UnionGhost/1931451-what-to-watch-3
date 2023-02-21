@@ -2,10 +2,6 @@ import { IsArray, IsDateString, IsEnum, IsHexColor, IsInt, IsString, Matches, Ma
 import { GenreEnum } from '../../../types/genre.enum.js';
 import { FilmValidationEnum } from '../../../types/validation.enum.js';
 
-/**
- * TODO: Не корректные сообщения об ошибках где проверяется длинна строки.
- * Сообщения типа "Minimum name length must be 5" заменить на "Minimum name length must be more than 5"
- */
 export default class CreateFilmDto {
   @IsString({message: FilmValidationEnum.Name.IsString})
   @MinLength(FilmValidationEnum.Name.MinLength.Value, {message: FilmValidationEnum.Name.MinLength.Message})

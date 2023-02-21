@@ -1,5 +1,9 @@
 import { getCurrentYear } from '../utils/common.js';
 
+/**
+ * TODO: Не корректные сообщения об ошибках где проверяется длинна строки.
+ * Сообщения типа "Minimum name length must be 5" заменить на "Minimum name length must be more than 5"
+ */
 export const FilmValidationEnum = {
   Name: {
     IsString: 'name is required',

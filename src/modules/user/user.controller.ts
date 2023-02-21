@@ -61,6 +61,16 @@ export default class UserController extends Controller {
       middlewares: [
         new PrivateRouteMiddleware(),
         new ValidateObjectIdMiddleware('userId'),
+
+        /**
+         * Б2. При выполнении кода не возникает необработанных ошибок.
+         * Если нет прав на создание папки, выходит ошибка "EACCES: permission denied, mkdir '/files'"
+         * Пользователю не надо знать что папка не создалась, его надо просто уведомить что-то типо "Ошибка загрузки изображения",
+         * а ошибку залогировать чтобы о ней узнал разработчик.
+         *
+         * Так же при таких ошибках мы потенциально можем сообщить пользователю потенциально конфиденциальные данные.
+         * В случае ошибки создания папки мы показывает путь на сервере, что недопустимо
+         */
         new UploadFileMiddleware(this.configService.get('UPLOAD_DIRECTORY'), 'avatar')
       ]
     });
