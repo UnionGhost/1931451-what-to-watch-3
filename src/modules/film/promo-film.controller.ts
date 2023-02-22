@@ -11,6 +11,9 @@ import { fillDTO } from '../../utils/common.js';
 import { FilmServiceInterface } from './film-service.interface.js';
 import FilmResponse from './response/film.response.js';
 
+/**
+ * Какая сейчас роль промо фильмов? В ТЗ описано очень расплывчато
+ */
 @injectable()
 export default class PromoFilmController extends Controller {
   constructor(
