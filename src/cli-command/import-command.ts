@@ -62,6 +62,9 @@ export default class ImportCommand implements CliCommandInterface {
   }
 
   public async execute(filename: string, login: string, password: string, host: string, dbname: string, salt: string): Promise<void> {
+    /**
+     * Читать из енв
+     */
     const uri = getURI(login, password, host, this.config.get('DB_PORT'), dbname);
     this.salt = salt;
 

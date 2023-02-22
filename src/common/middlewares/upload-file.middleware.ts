@@ -16,6 +16,9 @@ export class UploadFileMiddleware implements MiddlewareInterface {
       filename: (_req, file, callback) => {
         const extension = mime.extension(file.mimetype);
         const filename = nanoid();
+        /**
+         * Кидать ошибку валидации файла и проверку на его загрузку
+         */
         callback(null, `${filename}.${extension}`);
       }
     });

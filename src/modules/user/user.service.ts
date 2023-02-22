@@ -26,6 +26,9 @@ export default class UserService implements UserServiceInterface {
     return result;
   }
 
+  /**
+   * Переименовать параметры
+   */
   public async updateById(filmId: string, dto: UpdateUserDto): Promise<DocumentType<UserEntity> | null> {
     return this.userModel
       .findByIdAndUpdate(filmId, dto, {new: true})

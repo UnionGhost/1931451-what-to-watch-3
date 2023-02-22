@@ -130,6 +130,9 @@ export default class UserController extends Controller {
     });
   }
 
+  /**
+   * Сделать, чтобы нельзя было обновить аватарку другому пользователю
+   */
   public async uploadAvatar(req: Request, res: Response): Promise<void> {
     const {userId} = req.params;
     const uploadFile = {avatarPath: req.file?.filename};
